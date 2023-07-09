@@ -24,7 +24,7 @@ def read_form():
     email_type = data['emailtype']
     content = data['content']
     sender = data['sender']
-    request_str = "Write me a "+email_type+" email to "+receiver+" regarding "+content+". The name of the mail sender is "+sender
+    request_str = "Write me a "+email_type+" email . The receiver's name is "+receiver+". The email should be regarding "+content+". The name of the mail sender is "+sender
     response = model.predict(request_str,**parameters)
     # response_str = str(response)
 

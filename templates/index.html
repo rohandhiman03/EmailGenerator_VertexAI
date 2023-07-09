@@ -13,6 +13,16 @@
             border-radius: 60%;
         }
 
+        #generated-email {
+            position: relative;
+        }
+        #generated-email .logo {
+            position: absolute;
+            top: 80px;
+            right: 8px;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 
@@ -54,7 +64,10 @@
                 <div id="generated-email">
                     {% if generated_email %}
                         <h2>Generated Email</h2>
-                        <textarea readonly rows="20">{{ generated_email }}</textarea>
+                        <textarea readonly rows="20" id="email-content">{{ generated_email }}</textarea>
+                        <span class="logo" onclick="copyToClipboard()" title="Copy to clipboard">
+                            <img src="{{ url_for('static', filename='images/copy-4.png') }}" alt="" width="30px"/>
+                        </span>
                     {% endif %}
                 </div>
             </section>
@@ -94,6 +107,13 @@
     <script src="{{ url_for('static', filename='/js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='/js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='/js/main.js') }}"></script>
+    <script>
+        function copyToClipboard() {
+            var emailContent = document.getElementById("email-content");
+            emailContent.select();
+            document.execCommand("copy");
+        }
+    </script>
 
 
 </body>
