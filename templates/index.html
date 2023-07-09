@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>EmailForge</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, version=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}"/>
+    </noscript>
+    <style>
+        .img {
+            border-radius: 60%;
+        }
+
+    </style>
+</head>
+
+<body class="is-preload">
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <span class="logo"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="100px" class="img" /></span>
+            <h1>EmailForge</h1>
+            <p>Take the hassle out of email writing with AI-powered email generation, using EmailForge<br /></p>
+        </header>
+
+
+
+        <div id="main">
+            <!-- Generate Email -->
+            <section id="intro" class="main">
+                <div class="spotlight">
+                    <div class="content">
+                        <header class="major">
+                            <h2>Generate Email</h2>
+                        </header>
+                        <form action="{{ url_for('read_form')}}" method="post">
+                            Enter the name of the Receiver : <input type="text" id="receiver" name="receiver" required>
+                            Select the type of Email :
+                            <select name="emailtype" id="emailtype" name="emailtype" required>
+                                <option value="Formal">Formal</option>
+                                <option value="In-Formal">In-Formal</option>
+                            </select>
+                            In short describe the content of the email: <input type="text" id="content" name="content" required>
+                            Enter the name of the Sender : <input type="text" id="sender" name="sender" required>
+                        <br>
+                            <input type="submit" class="button" value="Generate">
+                    </form>
+                    </div>
+                    <span class="image"><img src="{{ url_for('static', filename='images/emailgen.jpg') }}" alt=""/></span>
+                </div>
+                <div id="generated-email">
+                    {% if generated_email %}
+                        <h2>Generated Email</h2>
+                        <textarea readonly rows="20">{{ generated_email }}</textarea>
+                    {% endif %}
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <h2>About EmailForge</h2>
+                <p>EmailForge is a website used to generate Emails easily and quickly. It uses Google's Vertex Generative AI Model to generate the Emails.</p>
+                <ul class="actions">
+                    <li><a href="https://cloud.google.com/vertex-ai" class="button">Learn More</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Developed By - Rohan Dhiman</h2>
+                <h4>Masters Student @ Concordia University,Montreal</h4>
+                <dl class="alt">
+                    <dt>Email</dt>
+                    <dd><a href="mailto:rohansarnjitdhiman@gmail.com">rohansarnjitdhiman@gmail.com</a></dd>
+                </dl>
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/rohan-dhiman-923a21144/" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="https://www.instagram.com/rohansinghdhiman/" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+                    <li><a href="https://github.com/rohandhiman03" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                </ul>
+            </section>
+            <p class="copyright">&copy; Rohan Dhiman.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/jquery.scrollex.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/jquery.scrolly.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='/js/main.js') }}"></script>
+
+
+</body>
+
+</html>
